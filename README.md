@@ -1,1 +1,7 @@
-# alpine-nginx-php7
+# Alpine Nginx PHP7
+
+## Quick start
+- `./run.bash`
+- <http://localhost:8080>
+
+
