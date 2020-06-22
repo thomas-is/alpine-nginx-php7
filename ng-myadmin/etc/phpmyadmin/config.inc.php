@@ -9,7 +9,9 @@
  *
  * @package PhpMyAdmin
  */
-declare(strict_types=1);
+//declare(strict_types=1);
+
+ $cfg['PmaAbsoluteUri'] = './';
 
 /**
  * This is needed for cookie based authentication to encrypt password in
