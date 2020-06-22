@@ -12,10 +12,9 @@ RUN apk update \
 RUN rm -rf /var/cache/apk/* \
 &&  mkdir /run/nginx
 
-RUN cd /srv \
-&&  git clone https://github.com/phppgadmin/phppgadmin
+RUN git clone https://github.com/phppgadmin/phppgadmin /srv
 
 COPY ./etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
-COPY ./srv/phppgadmin/conf /srv/phppgadmin/conf
+COPY ./srv/conf /srv/conf
 
 CMD php-fpm7 && /usr/sbin/nginx -c /etc/nginx/nginx.conf -g "daemon off;" 
