@@ -1,7 +1,7 @@
 FROM alpine
 
 RUN apk update && apk upgrade
-RUN apk add ca-certificates figlet \
+RUN apk add ca-certificates tmux figlet \
   git \
   openssh-client \
   mysql-client postgresql-client \
@@ -10,4 +10,4 @@ RUN apk add ca-certificates figlet \
 
 COPY profile /root/.profile
 
-CMD sh -l
+CMD tail -f /dev/null 
