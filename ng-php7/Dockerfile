@@ -8,6 +8,7 @@ RUN apk update && apk upgrade && \
   php7-mbstring \
   php7-openssl \
   php7-pdo php7-pdo_mysql php7-pdo_pgsql \
+  php7-pecl-ssh2 \
   php7-session
 
 RUN rm /var/cache/apk/*
