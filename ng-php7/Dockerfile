@@ -1,7 +1,7 @@
 FROM alpine
 
 RUN apk update && apk upgrade && \
-  apk add nginx php7 php7-fpm \
+  apk add ca-certificates nginx php7 php7-fpm \
   php7-curl \
   php7-iconv \
   php7-json \
