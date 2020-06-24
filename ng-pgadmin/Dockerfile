@@ -1,7 +1,7 @@
 FROM alpine
 
 RUN apk update &&  apk upgrade 
-RUN apk add ca-certificates git nginx php7-fpm php7-session php7-pgsql php7-mbstring 
+RUN apk add ca-certificates git nginx postgresql-client php7-fpm php7-session php7-pgsql php7-mbstring 
 RUN rm -rf /var/cache/apk/* 
 
 RUN mkdir /run/nginx
