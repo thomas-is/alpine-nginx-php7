@@ -2,6 +2,7 @@ FROM alpine
 
 RUN apk update && apk upgrade
 RUN apk add ca-certificates figlet \
+  tmux \
   git \
   openssh-client \
   mysql-client \
