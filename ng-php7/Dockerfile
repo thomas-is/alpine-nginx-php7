@@ -11,10 +11,10 @@ RUN apk update && apk upgrade && \
   php7-pecl-ssh2 \
   php7-session
 
-RUN rm /var/cache/apk/*
-RUN mkdir /run/nginx
+RUN rm -rf /var/cache/apk/*
+RUN mkdir -p /run/nginx
 
-COPY ./etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY ./ng-default.conf /etc/nginx/conf.d/default.conf
 COPY ./srv /srv
 
-CMD php-fpm7 && /usr/sbin/nginx -c /etc/nginx/nginx.conf -g "daemon off;" 
+CMD php-fpm7 && /usr/sbin/nginx -c /etc/nginx/nginx.conf -g "daemon off;"
