@@ -1,7 +1,9 @@
-# SAK 
+# SAK - Swiss Army Knife / Sys Admin Kit
 
-## Usage
 ```
-docker run --rm -d --name box -v ~/.ssh:/root/.ssh:ro 0lfi/sak
-docker exec box sh -l 
+docker run --rm -it \
+  --network some_network \
+  -v ~/.ssh:/root/.ssh:ro \
+  -v $(pwd):/host \
+  0lfi/sak
 ```

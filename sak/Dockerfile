@@ -11,4 +11,4 @@ RUN apk add ca-certificates figlet \
 
 COPY profile /root/.profile
 
-CMD tail -f /dev/null 
+CMD [ "/bin/sh", "-l" ]
