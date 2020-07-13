@@ -316,7 +316,7 @@ _main() {
 			  echo
         echo "Setting up password for user $POSTGRES_USER with $POSTGRESS_PASSWORD_FILE"
 			  echo
-        docker_process_sql ALTER USER $POSTGRES_USER WITH PASSWORD \'$(cat $POSTGRESS_PASSWORD_FILE)\'
+        docker_process_sql "ALTER USER $POSTGRES_USER WITH PASSWORD '$(cat $POSTGRES_PASSWORD_FILE)'"
       fi
       # ---
 
