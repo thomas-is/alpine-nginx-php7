@@ -314,9 +314,9 @@ _main() {
       # PATCH: set up password from $POSTGRES_PASSWORD_FILE
       if [ -f "$POSTGRES_PASSWORD_FILE" ]; then
 			  echo
-        echo "Setting up password for user $POSTGRES_USER with $POSTGRESS_PASSWORD_FILE"
+        echo "Setting up password for user $POSTGRES_USER with $POSTGRES_PASSWORD_FILE"
 			  echo
-        docker_process_sql "ALTER USER $POSTGRES_USER WITH PASSWORD '$(cat $POSTGRES_PASSWORD_FILE)'"
+        echo "ALTER USER $POSTGRES_USER WITH PASSWORD '$(cat $POSTGRES_PASSWORD_FILE)'" | docker_process_sql
       fi
       # ---
 
