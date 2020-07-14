@@ -14,7 +14,14 @@ RUN apk update && apk upgrade && \
 RUN rm -rf /var/cache/apk/*
 RUN mkdir -p /run/nginx
 
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod 744 /usr/local/bin/docker-entrypoint.sh
+
 COPY ./ng-default.conf /etc/nginx/conf.d/default.conf
 COPY ./srv /srv
 
-CMD php-fpm7 && /usr/sbin/nginx -c /etc/nginx/nginx.conf -g "daemon off;"
+EXPOSE 80
+VOLUME [ "/etc/nginx/conf.d", "/srv"]
+
+ENTRYPOINT [ "docker-entrypoint.sh" ]
+CMD [ "/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf", "-g", "daemon off;" ]
