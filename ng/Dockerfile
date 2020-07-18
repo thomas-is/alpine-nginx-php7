@@ -6,7 +6,10 @@ RUN apk update && apk upgrade \
 RUN rm /var/cache/apk/*
 RUN mkdir -p /run/nginx
 
-COPY ./ng-default.conf /etc/nginx/conf.d/default.conf
-COPY ./srv /srv
+COPY ng-default.conf /etc/nginx/conf.d/default.conf
+COPY srv /srv
 
-CMD /usr/sbin/nginx -c /etc/nginx/nginx.conf -g "daemon off;"
+EXPOSE 80
+VOLUME /srv
+
+CMD [ "/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf", "-g", "daemon off;" ]
