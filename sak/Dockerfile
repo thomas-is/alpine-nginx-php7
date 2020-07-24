@@ -2,6 +2,7 @@ FROM alpine
 
 RUN apk update && apk upgrade
 RUN apk add ca-certificates figlet \
+  busybox-extras \
   curl bind-tools netcat-openbsd \
   openssh-client \
   mysql-client \
