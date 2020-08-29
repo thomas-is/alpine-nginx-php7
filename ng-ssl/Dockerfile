@@ -15,6 +15,7 @@ RUN chmod 744 /usr/local/bin/docker-entrypoint.sh
 VOLUME [ "/etc/letsencrypt" ]
 EXPOSE 80 443
 
+COPY ./crontab /etc/crontabs/root
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY ./srv /srv
 
