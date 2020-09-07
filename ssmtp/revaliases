@@ -1,0 +1,1 @@
+root:${SMTP_FROM}:${SMTP_EXT_HOST}:${SMTP_EXT_PORT}
