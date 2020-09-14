@@ -6,6 +6,8 @@ else
   TAG="arm"
 fi
 
+echo "Tag is $TAG"
+
 echo "docker login"
 docker login -u 0lfi
 
