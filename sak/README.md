@@ -1,10 +1,9 @@
-# SAK - Swiss Army Knife / Sys Admin Kit
+# SAK - Swiss Army Knife
 
 ## Usage
 
-This image is meant to be used as an **temporary** container.
-
-Its default `CMD` is a login shell (`sh -l`), it will **not** run as a service.
+This image is meant to be used **interactively**, its default `CMD` is a login
+shell (`sh -l`).
 
 
 ## Quick start
