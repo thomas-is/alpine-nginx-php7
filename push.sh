@@ -23,7 +23,7 @@ do
   echo "${GRN}docker build -t 0lfi/$IMAGE:$TAG ./$IMAGE $RST"
   docker build -t 0lfi/$IMAGE:$TAG ./$IMAGE
 
-  echo "${GRN}docker push 0lfi/$IMAGE:$TAG"
+  echo "${GRN}docker push 0lfi/$IMAGE:$TAG $RST"
   docker push 0lfi/$IMAGE:$TAG
 
   echo "${GRN}docker manifest create 0lfi/$IMAGE:latest $RST"
