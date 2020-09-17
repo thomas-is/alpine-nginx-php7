@@ -7,5 +7,6 @@ PS1="$RED\u@\h$NORMAL:$BLUE\w$NORMAL# "
 
 alias l="ls -l"
 alias ll="ls -al"
+alias vi="vim"
 
 figlet -f smslant $(hostname)
