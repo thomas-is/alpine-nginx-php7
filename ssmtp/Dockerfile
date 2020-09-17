@@ -8,8 +8,8 @@ RUN rm -rf /var/cache/apk/*
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod 744 /usr/local/bin/docker-entrypoint.sh
 
-COPY ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
-COPY ssmtp/revaliases /etc/ssmtp/revaliases
+COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
+COPY revaliases /etc/ssmtp/revaliases
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 CMD [ "tail", "-f", "/dev/null" ]
