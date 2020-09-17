@@ -19,6 +19,7 @@ RUN apk add ca-certificates figlet \
   php7-pdo php7-pdo_mysql php7-pdo_pgsql \
   php7-pecl-ssh2 \
   php7-session
+RUN rm -rf /var/cache/apk/*
 
 COPY profile /root/.profile
 
