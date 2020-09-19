@@ -1,10 +1,10 @@
 FROM alpine
 
-ENV SSL_DOMAIN  ""
-ENV CHECK       ""
 ENV CLIENT      no
+ENV SSL_DOMAIN  ""
 ENV ACCEPT      0.0.0.0:443
 ENV CONNECT     127.0.0.1:80
+ENV VERIFY      ""
 
 RUN apk update && apk upgrade && \
   apk add ca-certificates stunnel openssl
