@@ -8,6 +8,11 @@ BLU="\033[1;34m"
 
 echo "${ORG}docker login -u 0lfi$RST"
 docker login -u 0lfi
+if [ $? != 0 ] ; then
+  echo "${RED}fail$RST"
+  exit 1
+fi
+echo "${GRN}success$RST"
 
 if [ "$( uname -m )" = "x86_64" ] ; then
   TAG="amd64"
