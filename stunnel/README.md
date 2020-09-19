@@ -4,18 +4,18 @@
 
 ## Environment variables
 
-### `SSL_DOMAIN`
-Fully qualified domain name (FQDN) with cert in `/etc/letsencrypt/live/[FQDN]`
-
 ### `CLIENT`
-Run stunnel as a client (default is server)
+Set to `yes` to run stunnel as a client (default is server).
+
+### `SSL_DOMAIN`
+Fully qualified domain name (FQDN) with cert in `/etc/letsencrypt/live/[FQDN]`.
 
 ### `ACCEPT`
-Accept connections on specified address:port
+Accept connections on specified `address:port` (default is `0.0.0.0:443`).
 
 ### `CONNECT`
-Connect to remote address:port
+Connect to remote `address:port` (default is `127.0.0.1:80`).
 
 ### `VERIFY`
-A coma separated list of allowed hosts.
-Each host authenticate with its FQDN certificate.
+Optional, a coma separated list of hosts.
+Enable `verifyChain` for each host.
