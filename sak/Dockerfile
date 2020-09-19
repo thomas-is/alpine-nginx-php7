@@ -3,7 +3,8 @@ FROM alpine
 RUN apk update && apk upgrade
 RUN apk add ca-certificates figlet \
   busybox-extras \
-  curl bind-tools netcat-openbsd \
+  bind-tools netcat-openbsd \
+  curl jq \
   openssh-client \
   mysql-client \
   psqlodbc postgresql-client \
