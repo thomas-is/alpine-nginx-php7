@@ -29,6 +29,14 @@ do
   echo "${BLU}docker push 0lfi/$IMAGE:latest $RST"
   docker push 0lfi/$IMAGE:latest || exit 1
 
+done
+
+for IMAGE in $( ls -d */ | sed -e 's/\///g' )
+do
+
+  if [ -f $IMAGE/ignore ] ; then continue ; fi
+  if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
+
   echo "${BLU}docker manifest create 0lfi/$IMAGE:latest $RST"
   docker manifest create 0lfi/$IMAGE:latest \
   --amend 0lfi/$IMAGE:amd64 \
