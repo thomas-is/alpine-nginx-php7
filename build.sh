@@ -15,7 +15,7 @@ fi
 for IMAGE in $( ls -d */ | sed -e 's/\///g' )
 do
 
-  if [ -f $IMAGE/ignore ] ; then continue ; fi
+  if [ -f $IMAGE/ignore ] ; then echo "${ORG}Skipping $IMAGE"; continue ; fi
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
 
   echo "${BLU}docker build -t 0lfi/$IMAGE:$TAG ./$IMAGE $RST"

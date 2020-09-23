@@ -21,7 +21,7 @@ fi
 for IMAGE in $( ls -d */ | sed -e 's/\///g' )
 do
 
-  if [ -f $IMAGE/ignore ] ; then continue ; fi
+  if [ -f $IMAGE/ignore ] ; then echo "${ORG}Skipping $IMAGE"; continue ; fi
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
 
   echo "${BLU}docker push 0lfi/$IMAGE:$TAG $RST"
@@ -34,7 +34,7 @@ done
 for IMAGE in $( ls -d */ | sed -e 's/\///g' )
 do
 
-  if [ -f $IMAGE/ignore ] ; then continue ; fi
+  if [ -f $IMAGE/ignore ] ; then echo "${ORG}Skipping $IMAGE"; continue ; fi
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
 
   echo "${BLU}docker manifest create 0lfi/$IMAGE:latest $RST"

@@ -29,6 +29,7 @@ printf "${GRN}success$RST\n"
 for IMAGE in $( ls -d */ | sed -e 's/\///g' )
 do
 
+  if [ -f $IMAGE/ignore ] ; then echo "${ORG}Skipping $IMAGE"; continue ; fi
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
   if [ ! -f $IMAGE/README.md ] ; then continue ; fi
 
