@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cat > /etc/exports <<EOF
-/nfs    locahost(${NFS_OPTIONS})
+/nfs    127.0.0.1(${NFS_OPTIONS})
 EOF
 
 exportfs -arv
@@ -17,8 +17,8 @@ socket = r:TCP_NODELAY=1
 client = no
 
 [tunnel]
-accept  = ${SSL_DOMAIN}:2049 
-connect = localhost:2049
+accept  = 0.0.0.0:2049
+connect = 127.0.0.1:2049
 cert = /etc/letsencrypt/live/${SSL_DOMAIN}/fullchain.pem
 key =  /etc/letsencrypt/live/${SSL_DOMAIN}/privkey.pem
 CApath = /etc/ssl/certs
