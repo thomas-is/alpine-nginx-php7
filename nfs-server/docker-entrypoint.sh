@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ ! -f /run/secrets/${NFS_PSK} ] ; then
-  echo "Can't find docker secret ${NFS_PSK}"
+if [ ! -f ${NFS_PSK} ] ; then
+  echo "Can't find ${NFS_PSK}"
   echo "Can't run without it!"
   exit 1
 fi
@@ -24,7 +24,7 @@ client = no
 accept  = 0.0.0.0:2049
 connect = 127.0.0.1:2049
 ciphers = PSK
-PSKsecrets = /run/secrets/${PSK}
+PSKsecrets = ${NFS_PSK}
 EOF
 
 exportfs -arv
