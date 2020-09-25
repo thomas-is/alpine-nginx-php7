@@ -1,7 +1,0 @@
-# /etc/exports
-#
-# See exports(5) for a description.
-
-# use exportfs -arv to reread
-/nfs    ${NFS_NETWORK}(${NFS_OPTIONS})
-
