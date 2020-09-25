@@ -7,7 +7,7 @@ if [ ! -f ${NFS_PSK} ] ; then
 fi
 
 cat > /etc/exports <<EOF
-/nfs    127.0.0.1(${NFS_OPTIONS})
+/nfs    *(${NFS_OPTIONS})
 EOF
 
 cat > /etc/stunnel/stunnel.conf <<EOF
@@ -24,12 +24,15 @@ client = no
 sslVersion = all
 options = NO_SSLv2
 accept  = 0.0.0.0:2049
+>>>>>>> Stashed changes
 connect = 127.0.0.1:2049
 ciphers = PSK
 PSKsecrets = ${NFS_PSK}
 EOF
 
-exportfs -arv
-
+/sbin/rpcbind -w
+/usr/sbin/rpc.nfsd --debug 8 --no-udp --no-nfs-version 2 --no-nfs-version 3
+/usr/sbin/rpc.mountd --debug all --no-udp --no-nfs-version 2 --no-nfs-version 3
+exportfs -rv
 
 exec "$@"

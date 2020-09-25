@@ -1,7 +1,6 @@
 FROM alpine
 
-ENV NFS_OPTIONS rw,no_root_squash
-ENV NFS_PSK /run/secrets/nfs
+ENV NFS_OPTIONS rw,no_root_squash,no_subtree_check,insecure
 
 RUN apk update && apk upgrade \
 &&  apk add nfs-utils stunnel
