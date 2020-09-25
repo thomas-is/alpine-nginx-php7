@@ -30,19 +30,3 @@ do
   docker push 0lfi/$IMAGE:latest || exit 1
 
 done
-
-for IMAGE in $( ls -d */ | sed -e 's/\///g' )
-do
-
-  if [ -f $IMAGE/ignore ] ; then echo "${ORG}Skipping $IMAGE"; continue ; fi
-  if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
-
-  echo "${BLU}docker manifest create 0lfi/$IMAGE:latest $RST"
-  docker manifest create 0lfi/$IMAGE:latest \
-  --amend 0lfi/$IMAGE:amd64 \
-  --amend 0lfi/$IMAGE:arm || exit 1
-
-  echo "${BLU}docker manifest push 0lfi/$IMAGE:latest $RST"
-  docker manifest push 0lfi/$IMAGE:latest || exit 1
-
-done
