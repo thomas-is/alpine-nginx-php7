@@ -1,8 +1,7 @@
 FROM alpine
 
-ENV SSL_DOMAIN  ""
-ENV VERIFY      ""
 ENV NFS_OPTIONS rw,no_root_squash
+ENV NFS_PSK nfs
 
 RUN apk update && apk upgrade \
 &&  apk add nfs-utils stunnel
