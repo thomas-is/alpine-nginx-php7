@@ -1,6 +1,7 @@
 FROM alpine
 
 ENV NFS_SERVER 127.0.0.1
+ENV NFS_PSK /run/secrets/nfs
 
 RUN apk update && apk upgrade \
 &&  apk add stunnel
