@@ -6,11 +6,11 @@ GRN="\033[1;32m"
 ORG="\033[1;33m"
 BLU="\033[1;34m"
 
-echo "${ORG}docker login -u 0lfi$RST"
-docker login -u 0lfi
-if [ $? != 0 ] ; then
-  exit 1
-fi
+#echo "${ORG}docker login -u 0lfi$RST"
+#docker login -u 0lfi
+#if [ $? != 0 ] ; then
+#  exit 1
+#fi
 
 if [ "$( uname -m )" = "x86_64" ] ; then
   TAG="amd64"

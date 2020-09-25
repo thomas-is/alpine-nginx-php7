@@ -17,6 +17,8 @@ socket = r:TCP_NODELAY=1
 client = yes
 
 [nfs]
+sslVersion = all
+options = NO_SSLv2
 accept  = 0.0.0.0:2049
 connect = ${NFS_SERVER}:2049
 ciphers = PSK

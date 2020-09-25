@@ -21,6 +21,8 @@ socket = r:TCP_NODELAY=1
 client = no
 
 [nfs]
+sslVersion = all
+options = NO_SSLv2
 accept  = 0.0.0.0:2049
 connect = 127.0.0.1:2049
 ciphers = PSK
