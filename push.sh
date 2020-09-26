@@ -15,18 +15,22 @@ else
   TAG="arm"
 fi
 
+echo
 # push all images
 for IMAGE in $( ls -d */ | sed -e 's/\///g' )
 do
 
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
-  if [ -f $IMAGE/ignore ] ; then echo "${ORG}ignoring $REPO/$IMAGE"; continue ; fi
+  if [ -f $IMAGE/ignore ] ; then echo "[$ORG$REPO/$IMAGE$RST] ignored"; continue ; fi
+
+  echo "[$GRN$REPO/$IMAGE$RST] push"
 
   CMD="docker push 0lfi/$IMAGE:$TAG"
-  echo "$GRN$CMD$RST"
-  $CMD || exit 1
+  echo "  $CMD"
+  $CMD > /dev/null || exit 1
   CMD="docker push 0lfi/$IMAGE:latest"
-  echo "$GRN$CMD$RST"
-  $CMD || exit 1
+  echo "  $CMD"
+  $CMD > /dev/null || exit 1
 
 done
+echo

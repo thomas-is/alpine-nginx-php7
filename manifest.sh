@@ -14,16 +14,17 @@ for IMAGE in $( ls -d */ | sed -e 's/\///g' )
 do
 
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
-  if [ -f $IMAGE/ignore ] ; then echo "${ORG}Skipping $IMAGE"; continue ; fi
+  if [ -f $IMAGE/ignore ] ; then echo "[$ORG$REPO/$IMAGE$RST] ignored"; continue ; fi
 
-  CMD="docker manifest create $REPO/$IMAGE:latest \
-  --amend $REPO/$IMAGE:amd64 \
-  --amend $REPO/$IMAGE:arm"
-  echo "$BLU$CMD$RSt"
-  $CMD || echo "${RED}Failed!$RST"
+  echo "[$GRN$REPO/$IMAGE$RST] manifest"
+
+  CMD="docker manifest create $REPO/$IMAGE:latest --amend $REPO/$IMAGE:amd64 --amend $REPO/$IMAGE:arm"
+  echo "  $CMD"
+  $CMD > /dev/null || exit 1
 
   CMD="docker manifest push $REPO/$IMAGE:latest"
-  echo "$BLU$CMD$RSt"
-  $CMD || echo "${RED}Failed!$RST"
+  echo "  $CMD"
+  $CMD > /dev/null || exit 1
 
 done
+echo

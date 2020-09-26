@@ -15,19 +15,23 @@ else
   TAG="arm"
 fi
 
+echo
 # build all images
 for IMAGE in $( ls -d */ | sed -e 's/\///g' )
 do
 
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
-  if [ -f $IMAGE/ignore ] ; then echo "${ORG}Skipping $IMAGE"; continue ; fi
+  if [ -f $IMAGE/ignore ] ; then echo "[$ORG$REPO/$IMAGE$RST] ignored"; continue ; fi
+
+  echo "[$GRN$REPO/$IMAGE$RST] build"
 
   CMD="docker build -t $REPO/$IMAGE:$TAG ./$IMAGE"
-  echo "$BLU$CMD$RST"
-  $CMD || exit 1
+  echo "  $CMD"
+  $CMD > /dev/null || exit 1
 
   CMD="docker tag $REPO/$IMAGE:$TAG $REPO/$IMAGE:latest"
-  echo "$BLU$CMD$RST"
-  $CMD || exit 1
+  echo "  $CMD"
+  $CMD > /dev/null || exit 1
 
 done
+echo
