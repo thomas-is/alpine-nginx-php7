@@ -9,20 +9,21 @@ ORG="\033[1;33m"
 BLU="\033[1;34m"
 
 # create manifest for all images
+# images with tags amd64 and arm must exists
 for IMAGE in $( ls -d */ | sed -e 's/\///g' )
 do
 
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
   if [ -f $IMAGE/ignore ] ; then echo "${ORG}Skipping $IMAGE"; continue ; fi
 
-  CMD="docker manifest create 0lfi/$IMAGE:latest \
-  --amend 0lfi/$IMAGE:amd64 \
-  --amend 0lfi/$IMAGE:arm"
+  CMD="docker manifest create $REPO/$IMAGE:latest \
+  --amend $REPO/$IMAGE:amd64 \
+  --amend $REPO/$IMAGE:arm"
   echo "$BLU$CMD$RSt"
-  $CMD || exit 1
+  $CMD || echo "${RED}Failed!$RST"
 
-  CMD="docker manifest push 0lfi/$IMAGE:latest"
+  CMD="docker manifest push $REPO/$IMAGE:latest"
   echo "$BLU$CMD$RSt"
-  $CMD || exit 1
+  $CMD || echo "${RED}Failed!$RST"
 
 done
