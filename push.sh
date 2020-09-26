@@ -20,13 +20,13 @@ for IMAGE in $( ls -d */ | sed -e 's/\///g' )
 do
 
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
-  if [ -f $IMAGE/ignore ] ; then echo "${ORG}Skipping $IMAGE"; continue ; fi
+  if [ -f $IMAGE/ignore ] ; then echo "${ORG}ignoring $REPO/$IMAGE"; continue ; fi
 
   CMD="docker push 0lfi/$IMAGE:$TAG"
-  echo "$BLU$CMD$RST"
+  echo "$GRN$CMD$RST"
   $CMD || exit 1
-  CMD="docker push 0lfi/$IMAGE:latest $RST"
-  echo "$BLU$CMD$RST"
+  CMD="docker push 0lfi/$IMAGE:latest"
+  echo "$GRN$CMD$RST"
   $CMD || exit 1
 
 done
