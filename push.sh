@@ -15,9 +15,16 @@ else
   TAG="arm"
 fi
 
+if [ "$1" != "" ] ; then
+  IMAGELIST="$@"
+else
+  IMAGELIST=$( ls -d */ )
+fi
+# remove unwanted "/"
+IMAGELIST=$( echo "$IMAGELIST" | sed -e 's/\///g' )
+
 echo
-# push all images
-for IMAGE in $( ls -d */ | sed -e 's/\///g' )
+for IMAGE in $IMAGELIST
 do
 
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi

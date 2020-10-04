@@ -8,6 +8,14 @@ GRN="\033[1;32m"
 ORG="\033[1;33m"
 BLU="\033[1;34m"
 
+if [ "$1" != "" ] ; then
+  IMAGELIST="$@"
+else
+  IMAGELIST=$( ls -d */ )
+fi
+# remove unwanted "/"
+IMAGELIST=$( echo "$IMAGELIST" | sed -e 's/\///g' )
+
 # `docker login` won't work for that
 # we must log in Docker Hub
 echo   "${ORG}Docker Hub login$RST"
@@ -31,8 +39,8 @@ if [ "$JWT" = "null" ] ; then
 fi
 printf "${GRN}success$RST\n"
 
-# update README of all images on Docker Hub
-for IMAGE in $( ls -d */ | sed -e 's/\///g' )
+# PATCH README on Docker Hub
+for IMAGE in $IMAGELIST
 do
 
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi

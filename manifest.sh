@@ -8,9 +8,18 @@ GRN="\033[1;32m"
 ORG="\033[1;33m"
 BLU="\033[1;34m"
 
-# create manifest for all images
-# images with tags amd64 and arm must exists
-for IMAGE in $( ls -d */ | sed -e 's/\///g' )
+if [ "$1" != "" ] ; then
+  IMAGELIST="$@"
+else
+  IMAGELIST=$( ls -d */ )
+fi
+# remove unwanted "/"
+IMAGELIST=$( echo "$IMAGELIST" | sed -e 's/\///g' )
+
+echo
+# create manifest for each image
+# `latest`, `amd64` and `arm` images must exists on registry already
+for IMAGE in $IMAGELIST
 do
 
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
