@@ -1,0 +1,47 @@
+{
+  "rules": [
+    "resolver 127.0.0.11 valid=10s;",
+    "resolver_timeout 5s;",
+    "proxy_set_header  Host              $http_host;",
+    "proxy_set_header  X-Real-IP         $remote_addr;",
+    "proxy_set_header  X-Forwarded-For   $proxy_add_x_forwarded_for;",
+    "proxy_set_header  X-Forwarded-Proto $scheme;",
+    "proxy_connect_timeout 5s;",
+    "proxy_read_timeout 60s;",
+    "error_log  /dev/stderr;",
+    "access_log /dev/stdout main;"
+  ]
+  ,
+  "servers": [
+    {
+      "server_name": "mycluster.com mycluster.io",
+      "listen": "443 ssl",
+      "location": {
+          "/sonar":   { "endpoint": "sonar:80", "rules": [ "client_max_body_size 100M;" ] },
+          "/graylog": { "endpoint": "graylog:80" }
+      }
+    }
+    ,
+    {
+      "server_name": "localhost localdomain.local",
+      "listen": "80",
+      "rules": [
+        "allow 192.168.0.0/24;",
+        "allow 172.16.0.0/12;",
+        "allow 10.0.0.0/8;",
+        "deny all;"
+       ],
+      "location": {
+          "/": { "endpoint": "localhttp:80" }
+      }
+    },
+    {
+      "server_name": "default_server",
+      "listen": "80",
+      "location": {
+          "/": { "rules": [ "return 301 https://$host$request_uri;" ] },
+          "/.well-known/acme-challenge": { "endpoint": "certbot" }
+      }
+    }
+  ]
+}
