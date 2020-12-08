@@ -10,7 +10,7 @@ RUN mkdir -p /run/nginx
 COPY ./docker-entrypoint.sh /usr/local/bin/
 RUN chmod 744 /usr/local/bin/docker-entrypoint.sh
 
-VOLUME [ "/etc/dispatch.json", "/etc/letsencrypt" ]
+VOLUME [ "/etc/dispatch", "/etc/letsencrypt" ]
 EXPOSE 80 443
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]

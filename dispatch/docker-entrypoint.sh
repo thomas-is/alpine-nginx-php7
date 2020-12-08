@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DISPATCH_CONF="/etc/dispatch.json"
+DISPATCH_CONF="/etc/dispatch/dispatch.json"
 NG_CONF="/etc/nginx/conf.d/default.conf"
 
 keys () {
@@ -97,3 +97,5 @@ do
   fi
   echo "}" >> $NG_CONF
 done
+
+exec "$@"
