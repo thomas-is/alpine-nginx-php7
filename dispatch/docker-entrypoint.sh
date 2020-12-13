@@ -3,6 +3,8 @@
 DISPATCH_CONF="/etc/dispatch/dispatch.json"
 NG_CONF="/etc/nginx/conf.d/default.conf"
 
+echo "# generated from $DISPATCH_CONF" > $NG_CONF
+
 keys () {
   local INDEX=0
   while [ "$(echo $JSON | jq -r keys[$INDEX])" != "null" ]
