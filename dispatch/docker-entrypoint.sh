@@ -46,7 +46,7 @@ do
   SERVER_RULES=$(echo "$SERVERS" | jq -r .[$INDEX].rules )
   LOCATION=$(    echo "$SERVERS" | jq -r .[$INDEX].location )
 
-  echo "setting up $SERVER_NAME"
+  echo "[dispatch] setting up $SERVER_NAME"
 
   if [ "$SERVER_NAME" = "null" ] ; then
     echo "servers[$INDEX].server_name is null, assuming default_server"
@@ -106,5 +106,8 @@ do
   fi
   echo "}" >> $NG_CONF
 done
+
+sed -e 's/user nginx/user root/g' -i /etc/nginx/nginx.conf
+
 
 exec "$@"
