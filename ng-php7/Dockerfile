@@ -1,5 +1,7 @@
 FROM alpine
 
+ENV PHP_CLEAR_ENV yes
+
 RUN apk update && apk upgrade && \
   apk add ca-certificates nginx php7 php7-fpm \
   php7-curl \
