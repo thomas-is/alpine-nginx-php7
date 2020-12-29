@@ -2,11 +2,19 @@
 
 while true
 do
-  inotifywait --exclude .swp -e create -e modify -e delete -e move /etc/nginx/conf.d
+
+  STAMP=$( stat /etc/nginx/conf.d | grep Modify )
+  while [ "$STAMP" = "$( stat /etc/nginx/conf.d | grep Modify )" ]
+  do
+    sleep 5
+  done
+
+  echo "nginx -t"
   nginx -t
   if [ $? -eq 0 ]
   then
-    echo "nginx configuration changed, reloading"
+    echo "nginx -s reload"
     nginx -s reload
   fi
+
 done
