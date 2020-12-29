@@ -1,18 +1,10 @@
 # ng
 
-## Quick start
+`/etc/nginx/conf.d` **should** be mounted as an external volume.
 
-```
-docker build -t ng
-docker run -d --rm -p 8080:80 ng
-```
+`/etc/letsencrypt` **amy** be mounted as an external volume.
 
-## Configuration
+`ng-conf-monitor.sh` **will** force nginx to reload on any modification in
+`/etc/nginx/conf.d`.
 
-Use volumes to override default `/etc/nginx.conf.d` and `/srv`.
-```
-docker run -d --rm -p 8080:80 \
-  -v ($pwd)/etc/nginx/conf.d:/etc/nginx/conf.d \
-  -v ($pwd)/srv:/srv \
-  ng
-```
+

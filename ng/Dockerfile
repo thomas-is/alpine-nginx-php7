@@ -3,13 +3,16 @@ FROM alpine
 RUN apk update && apk upgrade \
 &&  apk add ca-certificates nginx
 
-RUN rm /var/cache/apk/*
+RUN rm -rf /var/cache/apk/*
+
 RUN mkdir -p /run/nginx
 
-COPY ng-default.conf /etc/nginx/conf.d/default.conf
-COPY srv /srv
+COPY ./docker-entrypoint.sh /usr/local/bin/
+COPY ./ng-conf-monitor.sh /usr/local/bin/
+RUN chmod -R 744 /usr/local/bin
 
-EXPOSE 80
-VOLUME /srv
+VOLUME [ "/etc/nginx/conf.d", "/etc/letsencrypt" ]
+EXPOSE 80 443
 
+ENTRYPOINT [ "docker-entrypoint.sh" ]
 CMD [ "/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf", "-g", "daemon off;" ]
