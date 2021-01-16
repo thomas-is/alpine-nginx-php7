@@ -1,5 +1,7 @@
 FROM alpine
 
+ENV PHP_UID       nobody
+ENV PHP_GID       nobudy
 ENV PHP_CLEAR_ENV yes
 
 RUN apk update && apk upgrade && \
