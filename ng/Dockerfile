@@ -1,5 +1,6 @@
 FROM alpine
 
+ENV NG_USER nginx
 RUN apk update && apk upgrade \
 &&  apk add ca-certificates nginx
 

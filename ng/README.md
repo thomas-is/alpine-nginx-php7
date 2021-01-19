@@ -1,10 +1,26 @@
 # ng
 
-`/etc/nginx/conf.d` **should** be mounted as an external volume.
+Nginx with auto-update config.
 
-`/etc/letsencrypt` **amy** be mounted as an external volume.
 
-`ng-conf-monitor.sh` **will** force nginx to reload on any modification in
-`/etc/nginx/conf.d`.
+## entrypoint
 
+`docker-entrypoint.sh` starts `ng-conf-monitor.sh` in the background.
+
+On changes in `/etc/nginx/conf.d`, configuration is tested. If it's valid, nginx
+is reloaded.
+
+
+## environment variables:
+
+- `NG_USER`
+  - user nginx runs as (default "nginx")
+
+
+## volumes
+
+- `/etc/nginx/conf.d`
+  - **should** be mounted as an external volume
+- `/etc/letsencrypt`
+  - **may** be mounted as an external volume
 
