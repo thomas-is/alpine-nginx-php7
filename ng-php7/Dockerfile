@@ -3,7 +3,7 @@ ARG ALPINE_VERSION=latest
 FROM alpine:$ALPINE_VERSION
 
 ENV PHP_UID       nobody
-ENV PHP_GID       nobudy
+ENV PHP_GID       nobody
 ENV PHP_CLEAR_ENV yes
 
 RUN apk update && apk upgrade && \
