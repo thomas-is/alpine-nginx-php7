@@ -1,4 +1,6 @@
-FROM alpine
+ARG ALPINE_VERSION=latest
+
+FROM alpine:$ALPINE_VERSION
 
 RUN apk update && apk upgrade
 RUN apk add ca-certificates figlet \
