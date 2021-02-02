@@ -8,12 +8,21 @@ GRN="\033[1;32m"
 ORG="\033[1;33m"
 BLU="\033[1;34m"
 
-# non and64 is considered arm
-if [ "$( uname -m )" = "x86_64" ] ; then
-  TAG="amd64"
-else
-  TAG="arm"
-fi
+case $( uname -m ) in
+  x86_64)
+    TAG="amd64"
+    ALPINE_VERSION="latest"
+    ;;
+  armv7l)
+    TAG="arm32v7"
+#   workaround alpine issue on arm
+#   <https://gitlab.alpinelinux.org/alpine/aports/-/issues/12091>
+    ALPINE_VERSION="3.12"
+    ;;
+  *)
+    TAG="noarch"
+  ;;
+esac
 
 if [ "$1" != "" ] ; then
   IMAGELIST="$@"
