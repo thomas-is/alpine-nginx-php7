@@ -1,3 +1,0 @@
-# m	h	d	M	w	command
-  0	4	*	*	*	certbot renew --nginx -n -d ${SSL_DOMAIN}
-
