@@ -14,7 +14,6 @@ COPY ./docker-entrypoint.sh /usr/local/bin/
 COPY ./ng-conf-monitor.sh /usr/local/bin/
 RUN chmod -R 744 /usr/local/bin
 
-VOLUME [ "/etc/nginx/conf.d", "/etc/letsencrypt" ]
 EXPOSE 80 443
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]

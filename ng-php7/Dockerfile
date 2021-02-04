@@ -27,7 +27,6 @@ COPY ./ng-default.conf /etc/nginx/conf.d/default.conf
 COPY ./srv /srv
 
 EXPOSE 80
-VOLUME [ "/etc/nginx/conf.d", "/srv"]
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 CMD [ "/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf", "-g", "daemon off;" ]
