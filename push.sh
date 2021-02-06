@@ -44,9 +44,11 @@ do
   CMD="docker push 0lfi/$IMAGE:$TAG"
   echo "  $CMD"
   $CMD > /dev/null || exit 1
-  CMD="docker push 0lfi/$IMAGE:latest"
-  echo "  $CMD"
-  $CMD > /dev/null || exit 1
+  if [ "$TAG" = "amd64" ] ; then
+    CMD="docker push 0lfi/$IMAGE:latest"
+    echo "  $CMD"
+    $CMD > /dev/null || exit 1
+  fi
 
 done
 echo
