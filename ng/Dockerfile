@@ -10,6 +10,9 @@ RUN rm -rf /var/cache/apk/*
 
 RUN mkdir -p /run/nginx
 
+COPY ./conf.d /etc/nginx/conf.d
+COPY ./srv /srv
+
 COPY ./docker-entrypoint.sh /usr/local/bin/
 COPY ./ng-conf-monitor.sh /usr/local/bin/
 RUN chmod -R 744 /usr/local/bin
