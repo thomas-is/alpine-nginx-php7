@@ -18,7 +18,7 @@ IMAGELIST=$( echo "$IMAGELIST" | sed -e 's/\///g' )
 
 echo
 # create manifest for each image
-# `latest`, `amd64` and `arm` images must exists on registry already
+# `latest`, `amd64` and `arm32v7` images must exists on registry already
 for IMAGE in $IMAGELIST
 do
 
@@ -28,6 +28,10 @@ do
   echo "[$GRN$REPO/$IMAGE$RST] manifest"
 
   CMD="docker manifest create $REPO/$IMAGE:latest --amend $REPO/$IMAGE:amd64 --amend $REPO/$IMAGE:arm32v7"
+  echo "  $CMD"
+  $CMD > /dev/null || exit 1
+
+  CMD="docker manifest annotate --variant v7 $REPO/$IMAGE:latest $REPO/$IMAGE:arm32v7"
   echo "  $CMD"
   $CMD > /dev/null || exit 1
 
