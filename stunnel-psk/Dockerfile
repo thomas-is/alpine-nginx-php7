@@ -1,4 +1,6 @@
-FROM alpine
+ARG ALPINE_VERSION=latest
+
+FROM alpine:$ALPINE_VERSION
 
 ENV CLIENT      no
 ENV ACCEPT      0.0.0.0:8080

@@ -1,4 +1,6 @@
-FROM alpine
+ARG ALPINE_VERSION=latest
+
+FROM alpine:$ALPINE_VERSION
 
 ENV PMA_SERVERS "localhost" 
 
