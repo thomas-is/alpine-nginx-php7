@@ -1,6 +1,6 @@
-ARG ALPINE_VERSION=latest
+ARG ALPINE=latest
 
-FROM alpine:$ALPINE_VERSION
+FROM alpine:$ALPINE
 
 RUN apk update && apk upgrade && \
   apk add ca-certificates ssmtp

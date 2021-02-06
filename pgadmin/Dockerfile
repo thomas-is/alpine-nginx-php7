@@ -1,8 +1,8 @@
-ARG ALPINE_VERSION=latest
+ARG ALPINE=latest
 
-FROM alpine:$ALPINE_VERSION
+FROM alpine:$ALPINE
 
-ENV PGA_SERVERS "localhost" 
+ENV PGA_SERVERS "localhost"
 
 RUN apk update &&  apk upgrade
 RUN apk add ca-certificates git nginx postgresql-client php7-fpm php7-session php7-pgsql php7-mbstring

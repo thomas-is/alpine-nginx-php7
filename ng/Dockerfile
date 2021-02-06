@@ -1,6 +1,6 @@
-ARG ALPINE_VERSION=latest
+ARG ALPINE=latest
 
-FROM alpine:$ALPINE_VERSION
+FROM alpine:$ALPINE
 
 ENV NG_USER nginx
 RUN apk update && apk upgrade \

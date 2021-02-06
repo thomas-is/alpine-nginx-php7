@@ -1,8 +1,8 @@
-ARG ALPINE_VERSION=latest
+ARG ALPINE=latest
 
-FROM alpine:$ALPINE_VERSION
+FROM alpine:$ALPINE
 
-ENV PMA_SERVERS "localhost" 
+ENV PMA_SERVERS "localhost"
 
 RUN apk update && apk upgrade
 RUN apk add ca-certificates nginx php7-fpm phpmyadmin

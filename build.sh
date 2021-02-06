@@ -11,13 +11,13 @@ BLU="\033[1;34m"
 case $( uname -m ) in
   x86_64)
     TAG="amd64"
-    ALPINE_VERSION="latest"
+    ALPINE="latest"
     ;;
   armv7l)
     TAG="arm32v7"
 #   workaround alpine issue on arm
 #   <https://gitlab.alpinelinux.org/alpine/aports/-/issues/12091>
-    ALPINE_VERSION="3.12"
+    ALPINE="3.12"
     ;;
   *)
     TAG="noarch"
@@ -41,7 +41,7 @@ do
 
   echo "[$GRN$REPO/$IMAGE$RST] build"
 
-  CMD="docker build -t $REPO/$IMAGE:$TAG --build-arg ALPINE_VERSION=$ALPINE_VERSION ./$IMAGE"
+  CMD="docker build -t $REPO/$IMAGE:$TAG --build-arg ALPINE=$ALPINE ./$IMAGE"
   echo "  $CMD"
   $CMD > /dev/null || exit 1
 
