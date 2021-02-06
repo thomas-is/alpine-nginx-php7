@@ -27,6 +27,10 @@ do
 
   echo "[$GRN$REPO/$IMAGE$RST] manifest"
 
+  CMD="docker manifest rm $REPO/$IMAGE:latest"
+  echo "  $CMD"
+  $CMD > /dev/null || exit 1
+
   CMD="docker manifest create $REPO/$IMAGE:latest --amend $REPO/$IMAGE:amd64 --amend $REPO/$IMAGE:arm32v7"
   echo "  $CMD"
   $CMD > /dev/null || exit 1
