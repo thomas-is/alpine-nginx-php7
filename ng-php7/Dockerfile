@@ -2,8 +2,7 @@ ARG ALPINE=latest
 
 FROM alpine:$ALPINE
 
-ENV PHP_UID       nobody
-ENV PHP_GID       nobody
+ENV PHP_USER      nobody
 ENV PHP_CLEAR_ENV yes
 
 RUN apk update && apk upgrade && \
