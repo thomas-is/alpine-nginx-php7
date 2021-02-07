@@ -45,11 +45,11 @@ do
   echo "  $CMD"
   $CMD > /dev/null || exit 1
 
-  if [ "$TAG" = "amd64" ] ; then
-    CMD="docker tag $REPO/$IMAGE:$TAG $REPO/$IMAGE:latest"
-    echo "  $CMD"
-    $CMD > /dev/null || exit 1
-  fi
+#  if [ "$TAG" = "amd64" ] ; then
+#    CMD="docker tag $REPO/$IMAGE:$TAG $REPO/$IMAGE:latest"
+#    echo "  $CMD"
+#    $CMD > /dev/null || exit 1
+#  fi
 
 done
 echo
