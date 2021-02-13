@@ -39,17 +39,15 @@ do
   if [ ! -f $IMAGE/Dockerfile ] ; then continue ; fi
   if [ -f $IMAGE/ignore ] ; then echo "[$ORG$REPO/$IMAGE$RST] ignored"; continue ; fi
 
-  echo "[$GRN$REPO/$IMAGE$RST] build"
+  echo "[$GRN$REPO/$IMAGE$RST]"
 
   CMD="docker build -t $REPO/$IMAGE:$TAG --build-arg ALPINE=$ALPINE ./$IMAGE"
   echo "  $CMD"
   $CMD > /dev/null || exit 1
 
-#  if [ "$TAG" = "amd64" ] ; then
-#    CMD="docker tag $REPO/$IMAGE:$TAG $REPO/$IMAGE:latest"
-#    echo "  $CMD"
-#    $CMD > /dev/null || exit 1
-#  fi
+  CMD="docker push 0lfi/$IMAGE:$TAG"
+  echo "  $CMD"
+  $CMD > /dev/null || exit 1
 
 done
 echo
