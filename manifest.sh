@@ -29,7 +29,7 @@ do
 
   CMD="docker manifest rm $REPO/$IMAGE:latest"
   echo "  $CMD"
-  $CMD > /dev/null || exit 1
+  $CMD > /dev/null
 
   CMD="docker manifest create $REPO/$IMAGE:latest --amend $REPO/$IMAGE:amd64 --amend $REPO/$IMAGE:arm32v7"
   echo "  $CMD"
