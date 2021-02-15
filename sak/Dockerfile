@@ -18,8 +18,6 @@ RUN rm -rf /var/cache/apk/*
 
 COPY profile /root/.profile
 
-RUN git clone https://github.com/thomas-is/rc /root/rc && \
-  mv /root/rc/vimrc /root/.vimrc && \
-  rm -rf /root/rc
+RUN curl -s https://raw.githubusercontent.com/thomas-is/rc/main/vimrc > /root/.vimrc
 
 CMD [ "/bin/sh", "-l" ]
