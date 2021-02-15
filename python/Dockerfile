@@ -3,13 +3,16 @@ ARG ALPINE=latest
 FROM alpine:$ALPINE
 
 RUN apk update && apk upgrade \
-&&  apk add python3 py3-pip
+&&  apk add ca-certificates curl \
+    vim python3 py3-pip
 
 RUN rm -rf /var/cache/apk/*
 
-RUN ln -s /usr/bin/python3 /usr/bin/python
+COPY profile /root/.profile
 
-COPY ./profile /etc/profile
+RUN curl -s https://raw.githubusercontent.com/thomas-is/rc/main/vimrc > /root/.vimrc
+
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
 RUN chmod -R 755 /usr/local/bin
