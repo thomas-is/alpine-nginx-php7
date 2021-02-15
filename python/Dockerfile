@@ -8,7 +8,7 @@ RUN apk update && apk upgrade \
 
 RUN rm -rf /var/cache/apk/*
 
-COPY profile /root/.profile
+COPY profile /etc/profile
 
 RUN curl -s https://raw.githubusercontent.com/thomas-is/rc/main/vimrc > /root/.vimrc
 
