@@ -17,7 +17,8 @@ case $( uname -m ) in
     TAG="arm32v7"
 #   workaround alpine issue on arm
 #   <https://gitlab.alpinelinux.org/alpine/aports/-/issues/12091>
-    ALPINE="3.12"
+#    ALPINE="3.12"
+    ALPINE="latest"
     ;;
   *)
     TAG="noarch"
