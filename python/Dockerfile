@@ -19,5 +19,7 @@ RUN chmod -R 755 /usr/local/bin
 
 RUN mkdir /src
 
+WORKDIR /src
+
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 CMD [ "sh", "-l" ]
