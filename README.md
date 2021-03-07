@@ -11,11 +11,10 @@ All images are based on Alpine.
 - `update-readme.sh`: update README on dockerhub
 
 
-## issue on ARM
+## network issue on ARM
 
-Due to an issue on Alpine ARM, builds for `arm32v7` use `alpine:3.12`
+No network since `alpine:3.13`
 <https://gitlab.alpinelinux.org/alpine/aports/-/issues/12091>.
-
 
 ### workaround
 
