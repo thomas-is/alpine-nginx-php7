@@ -16,6 +16,8 @@ RUN apk update && apk upgrade && \
   php8-pdo php8-pdo_mysql php8-pdo_pgsql \
   php8-session
 
+RUN ln -s /usr/bin/php8 /usr/bin/php
+
 RUN rm -rf /var/cache/apk/*
 RUN mkdir -p /run/nginx
 
