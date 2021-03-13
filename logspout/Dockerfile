@@ -11,4 +11,7 @@ RUN /src/build.sh
 RUN rm -rf /src
 RUN rm -rf /var/cache/apk/*
 
-CMD [ "logspout" ]
+COPY ./docker-entrypoint.sh /usr/local/bin/
+RUN chmod -R 744 /usr/local/bin
+
+ENTRYPOINT [ "docker-entrypoint.sh" ]
