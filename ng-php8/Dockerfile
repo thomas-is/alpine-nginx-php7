@@ -2,7 +2,6 @@ ARG ALPINE=latest
 
 FROM alpine:$ALPINE
 
-ENV FPM           enabled
 ENV FPM_USER      nobody
 ENV FPM_CLEAR_ENV yes
 
