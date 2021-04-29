@@ -3,8 +3,8 @@
 while true
 do
 
-  STAMPS=$( stat -c '%Z' /etc/nginx/conf.d/* )
-  while [ "$STAMPS" = "$( stat -c '%Z' /etc/nginx/conf.d/* )" ]
+  STAMPS=$( stat -c '%Z' /etc/nginx/* )
+  while [ "$STAMPS" = "$( stat -c '%Z' /etc/nginx/* )" ]
   do
     sleep 1
   done

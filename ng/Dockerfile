@@ -4,13 +4,17 @@ FROM alpine:$ALPINE
 
 ENV NG_USER nginx
 RUN apk update && apk upgrade \
-&&  apk add ca-certificates nginx
+&&  apk add ca-certificates \
+  nginx \
+  nginx-mod-stream
 
 RUN rm -rf /var/cache/apk/*
 
 RUN mkdir -p /run/nginx
 
-COPY ./conf.d /etc/nginx/conf.d
+COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./stream.d /etc/nginx/stream.d
+COPY ./http.d /etc/nginx/http.d
 COPY ./srv /srv
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
