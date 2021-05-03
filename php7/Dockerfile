@@ -2,8 +2,7 @@ ARG ALPINE=latest
 
 FROM alpine:$ALPINE
 
-ENV FPM_USER      nobody
-ENV FPM_CLEAR_ENV yes
+ENV FPM_USER nobody
 
 RUN apk update && apk upgrade && \
   apk add ca-certificates php7 php7-fpm \
