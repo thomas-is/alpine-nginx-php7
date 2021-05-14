@@ -3,7 +3,7 @@ ARG ALPINE=latest
 FROM alpine:$ALPINE
 
 ENV SFTP_USER sftp
-ENV SFTP_PASS
+ENV SFTP_PASS ""
 ENV SFTP_PASSFILE /run/docker/secrets/sftp-pass
 ENV SFTP_PUBKEY /run/docker/secrets/sftp-id_rsa.pub
 
