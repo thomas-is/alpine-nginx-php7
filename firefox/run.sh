@@ -10,4 +10,4 @@ docker run --rm -it \
     -v $HOME/.Xauthority:/firefox/.Xauthority:ro \
     -e PULSE_SERVER=unix:/pulse \
     -v /run/user/$(id -u)/pulse/native:/pulse \
-    0lfi/firefox
+    0lfi/firefox "$@"

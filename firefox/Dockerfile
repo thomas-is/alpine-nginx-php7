@@ -3,7 +3,7 @@ ARG ALPINE=latest
 FROM alpine:$ALPINE
 
 RUN apk update && apk upgrade \
-&&  apk add tar bzip2 firefox-esr ffmpeg xorg-server-dev ttf-tlwg pulseaudio gnome-icon-theme
+&&  apk add tar bzip2 tor firefox-esr ffmpeg xorg-server-dev ttf-tlwg pulseaudio gnome-icon-theme
 
 RUN rm -rf /var/cache/apk/*
 
