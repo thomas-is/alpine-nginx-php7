@@ -1,15 +1,5 @@
 <?php
 
-/*
-	$conf['servers'][0]['desc'] = 'PostgreSQL';
-	$conf['servers'][0]['host'] = '';
-	$conf['servers'][0]['port'] = 5432;
-	$conf['servers'][0]['sslmode'] = 'allow';
-	$conf['servers'][0]['defaultdb'] = 'template1';
-	$conf['servers'][0]['pg_dump_path'] = '/usr/bin/pg_dump';
-	$conf['servers'][0]['pg_dumpall_path'] = '/usr/bin/pg_dumpall';
-*/
-
   $conf['servers'] = array();
 
   $pga_servers = explode(',','${PGA_SERVERS}');
@@ -49,4 +39,5 @@
 	$conf['ajax_refresh'] = 3;
 	$conf['plugins'] = array();
 	$conf['version'] = 19;
+
 ?>
