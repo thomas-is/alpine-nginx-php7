@@ -3,7 +3,7 @@
 docker run --rm -it \
     --name firefox \
     --shm-size=2048m \
-    -u $(id -u):$(id -g) \
+    -e USER_ID=$(id -u) \
     -e HOME=/home/firefox \
     -e DISPLAY=unix$DISPLAY \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
