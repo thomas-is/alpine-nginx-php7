@@ -1,5 +1,7 @@
 #!/bin/sh
 
+docker build -t dosbox .
+
 docker run --rm -it \
     --name dosbox \
     -e HOME=/home/dosbox \
@@ -10,4 +12,4 @@ docker run --rm -it \
     -e PULSE_SERVER=unix:/pulse \
     -v /run/user/$(id -u)/pulse/native:/pulse \
     -v ~/games/dos:/home/dosbox/drive \
-    0lfi/dosbox "$@"
+    dosbox "$@"
