@@ -2,6 +2,8 @@ ARG ALPINE=latest
 
 FROM alpine:$ALPINE
 
+ENV USER_ID 1000
+
 RUN apk update && apk upgrade \
 &&  apk add dosbox xorg-server-dev pulseaudio shadow
 
