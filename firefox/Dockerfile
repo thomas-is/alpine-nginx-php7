@@ -5,7 +5,7 @@ FROM alpine:$ALPINE
 ENV USER_ID 1000
 
 RUN apk update && apk upgrade \
-&&  apk add tar bzip2 tor firefox-esr ffmpeg xorg-server-dev ttf-tlwg pulseaudio gnome-icon-theme
+&&  apk add shadow tar bzip2 tor firefox-esr ffmpeg xorg-server-dev ttf-tlwg pulseaudio gnome-icon-theme
 
 RUN rm -rf /var/cache/apk/*
 
