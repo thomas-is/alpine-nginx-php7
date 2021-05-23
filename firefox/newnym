@@ -1,0 +1,4 @@
+#!/bin/sh
+
+TOR_PASS=$( cat /home/firefox/torpass )
+echo -e "AUTHENTICATE \"$TOR_PASS\"\r\nsignal NEWNYM\r\nQUIT" | nc 127.0.0.1 9051

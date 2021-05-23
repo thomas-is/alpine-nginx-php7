@@ -23,6 +23,8 @@ RUN chown -R firefox:firefox /home/firefox
 RUN chown -R firefox:firefox /var/lib/tor
 RUN chown -R firefox:firefox /var/log/tor
 
+COPY ./newnym /usr/local/bin/newnym
+
 COPY ./docker-entrypoint.sh /usr/local/bin/
 RUN chmod -R 755 /usr/local/bin
 
