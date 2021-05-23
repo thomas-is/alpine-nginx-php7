@@ -5,16 +5,23 @@ FROM alpine:$ALPINE
 ENV USER_ID 1000
 
 RUN apk update && apk upgrade \
-&&  apk add shadow tar bzip2 tor firefox-esr ffmpeg xorg-server-dev ttf-tlwg pulseaudio gnome-icon-theme
+&&  apk add shadow \
+  tor \
+  firefox-esr \
+  ffmpeg \
+  xorg-server-dev \
+  ttf-tlwg \
+  pulseaudio \
+  gnome-icon-theme
 
 RUN rm -rf /var/cache/apk/*
 
 RUN adduser firefox -h /home/firefox --disabled-password
 RUN mkdir -p /home/firefox/downloads
-COPY ./profile.tbz2 /home/firefox/
-RUN cd /home/firefox && tar xvjf ./profile.tbz2
-RUN rm /home/firefox/profile.tbz2
+ADD profile.tbz2 /home/firefox/
 RUN chown -R firefox:firefox /home/firefox
+RUN chown -R firefox:firefox /var/lib/tor
+RUN chown -R firefox:firefox /var/log/tor
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
 RUN chmod -R 755 /usr/local/bin
