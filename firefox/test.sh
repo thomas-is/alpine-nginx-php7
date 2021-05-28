@@ -12,5 +12,5 @@ docker run --rm -it \
     -v $HOME/.Xauthority:/firefox/.Xauthority:ro \
     -e PULSE_SERVER=unix:/pulse \
     -v /run/user/$(id -u)/pulse/native:/pulse \
-    test
+    test "$@"
 #    -v $(pwd)/mozilla:/home/firefox/.mozilla \
