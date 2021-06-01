@@ -14,6 +14,6 @@ RUN rm -rf /var/cache/apk/*
 
 COPY profile /etc/profile
 
-RUN curl -s https://raw.githubusercontent.com/thomas-is/rc/main/vimrc > /etc/vim/vimrc
+RUN curl -s https://raw.githubusercontent.com/thomas-is/rc/main/.vimrc > /etc/vim/vimrc
 
 CMD [ "/bin/sh", "-l" ]
